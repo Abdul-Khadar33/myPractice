@@ -1,0 +1,93 @@
+/*import java.util.*;
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+
+    Node(int val)
+    {
+        data = val;
+        left = null;
+        right = null;
+    }
+}
+
+public class BinaryTreeHeight
+{
+    public static int BinaryDiameter(Node root)
+    {
+        int diameter[] =new int[1];
+        diameter[0] = 0;
+        height(root, diameter);
+        return diameter[0];
+    }
+
+    public static int height(Node node, int[] diameter)
+    {
+        if(node == null)
+        {
+            return 0;
+        }
+        int ls = height(node.left, diameter);
+        int rs = height(node.right, diameter);
+
+        diameter[0] = (Math.max(diameter[0] , ls + rs));
+        return 1 + Math.max(ls, rs);
+    }
+    public static void main(String args[])
+    {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.left.right = new Node(6);
+        root.left.right.right = new Node(7);
+
+        BinaryTreeHeight tree = new BinaryTreeHeight();
+
+        int diameter = tree.BinaryDiameter(root);
+        System.out.println(diameter);
+    }
+}*/
+
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int d) {
+        data = d;
+    }
+}
+
+public class Main {
+
+    static int diameter = 0;
+
+    public static int height(Node root) {
+        if (root == null) return 0;
+
+        int lh = height(root.left);
+        int rh = height(root.right);
+
+        diameter = Math.max(diameter, lh + rh);
+
+        return 1 + Math.max(lh, rh);
+    }
+
+    public static void main(String[] args) {
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.left.right = new Node(6);
+        root.left.right.right = new Node(7);
+
+        height(root);
+
+        System.out.println(diameter);
+    }
+}
