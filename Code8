@@ -1,0 +1,31 @@
+import java.util.*;
+public class Main
+    {
+        public static String longestSubString(String s1)
+        {
+            int left = 0;
+            int max = 0;
+            int start = 0;
+            Set<Character> set = new HashSet<>();
+            for(int right = 0; right < s1.length(); right++)
+                {
+                    if(set.contains(s1.charAt(right)))
+                    {
+                        set.remove(s1.charAt(left++));
+                    }
+                    set.add(s1.charAt(right));
+                    if(right-left+1 > max)
+                    {
+                        max = right-left+1;
+                        start = left;
+                    }
+                }
+            return s1.substring(start, start+max);
+        }
+        public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            String s1 = sc.nextLine();
+            System.out.println(longestSubString(s1));
+        }
+    }
