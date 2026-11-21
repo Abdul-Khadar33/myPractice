@@ -1,0 +1,30 @@
+import java.util.*;
+public class Main
+    {
+        public static void combinations(int nums[],int start,int k,ArrayList<Integer> current)
+        {
+            if(current.size() == k)
+            {
+                System.out.println(current);
+                return;
+            }
+            for(int i = start; i < nums.length; i++)
+                {
+                    current.add(nums[i]);
+                    combinations(nums,i+1,k,current);
+                    current.remove(current.size()-1);
+                }
+        }
+        public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            int n = sc.nextInt();
+            int arr[] = new int[n];
+            for(int i = 0; i < n; i++)
+                {
+                    arr[i] = sc.nextInt();
+                }
+            int k = sc.nextInt();
+            combinations(arr,0,k,new ArrayList<>());
+        }
+    }
