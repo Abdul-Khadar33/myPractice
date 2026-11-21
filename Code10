@@ -1,0 +1,132 @@
+import java.util.*;
+public class Main
+    {
+        public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            Student student = null;
+            while(true)
+                {
+                    int n = sc.nextInt();
+                    switch(n)
+                        {
+                            case 1:
+                                int roll = sc.nextInt();
+                                String name = sc.next();
+                                double marks = sc.nextDouble();
+                                System.out.println("Student added");
+                                student = new Student(roll,name,marks);
+                            break;
+
+                            case 2:
+                                if(student == null)
+                                {
+                                    System.out.println("No student found");
+                                }
+                                else
+                                {
+                                    student.display();
+                                }
+                            break;
+
+                            case 3:
+                                if(student == null)
+                                {
+                                    System.out.println("No student found");
+                                }
+                                else
+                                {
+                                    student = null;
+                                    System.out.println("Student deleted");
+                                }
+                            break;
+
+                            case 4:
+                                if(student == null)
+                                {
+                                    System.out.println("No student found");
+                                }
+                                else
+                                {
+                                    double newMarks = sc.nextDouble();
+                                    student.setMarks(newMarks);
+                                    System.out.println("Marks updated");
+                                    student.display();
+                                }
+                            break;
+
+                            case 5:
+                                if(student == null)
+                                {
+                                    System.out.println("No student found");
+                                }
+                                else
+                                {
+                                    student.checkResult();
+                                }
+                            break;
+
+                            case 6:
+                                System.out.println("Exit");
+                            return;
+
+                            default:
+                                System.out.println("Invalid choice");
+                            break;
+                        }
+                }
+        }
+    }
+public class Student
+    {
+        private int roll;
+        private String name;
+        private double marks;
+        public Student(int roll, String name, double marks)
+        {
+            this.roll = roll;
+            this.name = name;
+            this.marks = marks;
+        }
+        int getRoll()
+        {
+            return roll;
+        }
+        String getName()
+        {
+            return name;
+        }
+        double getMarks()
+        {
+            return marks;
+        }
+        void setMarks(double marks)
+        {
+            this.marks = marks;
+        }
+        void checkResult()
+        {
+            if(marks > 50)
+            {
+                System.out.println("Pass");
+            }
+            else
+            {
+                System.out.println("Fail");
+            }
+        }
+        void display()
+        {
+            System.out.println("Roll is : " + roll);
+            System.out.println("Name is : " + name);
+            System.out.println("Marks is : " + marks);
+            if(marks > 50)
+            {
+                System.out.println("Pass");
+            }
+            else
+            {
+                System.out.println("Fail");
+            }
+        }
+    }
